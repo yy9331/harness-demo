@@ -11,3 +11,7 @@
 ## 2026-04-19T03:55:20.965Z — iteration 2 — pass_all=true
 
 本次评测在 Cursor 对话内由独立「评审」角色完成，未调用 Anthropic Messages API（与 `pnpm eval` 不同）。对照 `harness/spec.md` 与源码白名单，当前 `apps/web` 待办 MVP 功能齐全、边界合理；视觉为暖色纸质风 + 语义化 token，非模板紫渐变。总体通过 rubric 各条 pass_score。
+
+## 2026-04-19T06:53:54.130Z — iteration 3 — pass_all=true
+
+

@@ -12,6 +12,20 @@
   padding-bottom: 1rem;
 }
 
+.view-switch {
+  display: inline-flex;
+  gap: 0.25rem;
+  margin-top: 1rem;
+  padding: 0.25rem;
+  border-radius: 6px;
+  background: var(--surface-2);
+}
+
+.view-switch .btn-sm.active {
+  background: var(--surface);
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+}
+
 .title {
   margin: 0;
   font-size: 2rem;
@@ -49,6 +63,42 @@
 .input:focus-visible {
   outline: 2px solid var(--accent);
   outline-offset: 2px;
+}
+
+.input-sm {
+  min-height: 2.25rem;
+  padding: 0 0.6rem;
+  font-size: 0.875rem;
+}
+
+.btn-sm {
+  min-height: 2.25rem;
+  padding: 0.4rem 0.75rem;
+  font-size: 0.85rem;
+}
+
+.add-form-group {
+  margin-bottom: 1.5rem;
+}
+
+.options-row {
+  display: flex;
+  gap: 1rem;
+  margin-top: 0.75rem;
+  flex-wrap: wrap;
+}
+
+.option-group {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.option-label {
+  font-size: 0.85rem;
+  color: var(--muted);
+  font-family: ui-sans-serif, system-ui, sans-serif;
+  white-space: nowrap;
 }
 
 .toolbar {
@@ -165,6 +215,112 @@
 
 .btn-danger:hover:not(:disabled) {
   background: #fef2f2;
+}
+
+.btn-danger.btn-sm {
+  padding: 0.3rem 0.6rem;
+}
+
+.row {
+  flex-direction: column;
+  align-items: stretch;
+}
+
+.row > * {
+  width: 100%;
+}
+
+.todo-content {
+  display: flex;
+  flex: 1;
+}
+
+.todo-text-wrapper {
+  flex: 1;
+  min-width: 0;
+}
+
+.todo-meta {
+  display: flex;
+  gap: 0.5rem;
+  margin-top: 0.35rem;
+  flex-wrap: wrap;
+}
+
+.category-tag {
+  font-size: 0.75rem;
+  padding: 0.15rem 0.5rem;
+  border-radius: 999px;
+  background: var(--surface-2);
+  color: var(--muted);
+  font-family: ui-sans-serif, system-ui, sans-serif;
+}
+
+.due-tag {
+  font-size: 0.75rem;
+  padding: 0.15rem 0.5rem;
+  border-radius: 999px;
+  font-family: ui-sans-serif, system-ui, sans-serif;
+  border: 1px solid var(--border);
+}
+
+.due-today {
+  background: #fff7ed;
+  color: #c2410c;
+  border-color: #fed7aa;
+}
+
+.due-overdue {
+  background: #fef2f2;
+  color: #b91c1c;
+  border-color: #fecaca;
+}
+
+.due-future {
+  background: transparent;
+  color: var(--muted);
+}
+
+@media (prefers-color-scheme: dark) {
+  .due-today {
+    background: rgba(251, 146, 60, 0.15);
+    color: var(--accent);
+    border-color: rgba(251, 146, 60, 0.3);
+  }
+  .due-overdue {
+    background: rgba(248, 113, 113, 0.15);
+    color: var(--danger);
+    border-color: rgba(248, 113, 113, 0.3);
+  }
+}
+
+.todo-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 0.4rem;
+  margin-top: 0.5rem;
+  padding-top: 0.5rem;
+  border-top: 1px solid var(--surface-2);
+}
+
+.edit-container {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.edit-input {
+  width: 100%;
+}
+
+.edit-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 0.5rem;
+}
+
+.row-editing {
+  padding: 0.85rem;
 }
 
 .sr-only {
