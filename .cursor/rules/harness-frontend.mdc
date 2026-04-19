@@ -1,0 +1,25 @@
+---
+description: Ralph harness — 单 Agent 前端迭代时必读 harness 产物
+globs: apps/web/**/*
+alwaysApply: false
+---
+
+## 工作方式
+
+- 产品需求以 [`harness/spec.md`](harness/spec.md) 为准；质量维度以 [`harness/rubric.json`](harness/rubric.json) 为准。
+- 实现范围默认只在 `apps/web`（Vite + React + TS）。
+- **角色分离（同一 Cursor Agent，分轮执行）**
+  - **Generator**：读 `harness/spec.md` 与上一轮 [`harness/last_critique.md`](harness/last_critique.md) / [`harness/last_eval.json`](harness/last_eval.json)（若存在未通过项），只改 `apps/web`，不在实现轮自评「已满分」。
+  - **Evaluator**：在**单独一轮**或明确切换身份后，对照 spec 与白名单源码输出结构化 JSON，并写入 **`harness/_pending_eval.json`**（原始评测；`pass` 字段即使写了也会被脚本按 rubric 重算）。不要与 Generator 同一条消息里混写「我又改了代码又打了分」。
+- 若已启用 Ralph（存在 `harness/.ralph-enabled`），每轮 **Generator 开始前**应阅读上一轮 finalize 后的输出：
+  - [`harness/last_eval.json`](harness/last_eval.json)（机器可读）
+  - [`harness/last_critique.md`](harness/last_critique.md)（摘要）
+- **默认 `HARNESS_EVAL_MODE=cursor`**：`stop` hook **不会**调用外部大模型 API；仅在存在 `_pending_eval.json` 且未禁用 `HARNESS_FINALIZE_ON_STOP` 时运行 `scripts/finalize.mjs` 做确定性后处理。也可手动执行 `pnpm finalize`。
+- **Legacy `HARNESS_EVAL_MODE=api`**：`stop` hook 会触发独立 Anthropic Evaluator，需 API key；实现轮仍请勿自评代替该流程。
+
+## 建议顺序
+
+1. 读 `harness/spec.md` 与 `harness/last_critique.md`（若存在未通过项）。
+2. 改 `apps/web` 源码与样式（Generator）。
+3. 本地 `pnpm dev` 自检（可选）。
+4. 以 Evaluator 身份写 `harness/_pending_eval.json`，结束本轮；由 hook 或 `pnpm finalize` 更新 `last_eval.json` 等并可能注入 `followup_message`。

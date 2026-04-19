@@ -1,0 +1,7 @@
+node_modules
+dist
+.env
+.env.local
+.DS_Store
+harness/.ralph-enabled
+harness/_pending_eval.json

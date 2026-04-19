@@ -1,0 +1,34 @@
+{
+  "version": 1,
+  "criteria": [
+    {
+      "id": "design_quality",
+      "name": "设计整体性",
+      "description": "布局、层次、留白是否形成统一界面，而非零散控件堆砌。",
+      "weight": 1.2,
+      "pass_score": 6
+    },
+    {
+      "id": "originality",
+      "name": "原创性",
+      "description": "是否避免明显 AI 模板脸（如无意义的紫色大渐变卡片）；是否有清晰视觉意图。",
+      "weight": 1.2,
+      "pass_score": 6
+    },
+    {
+      "id": "craft",
+      "name": "工艺与可访问性基础",
+      "description": "字体层级、对比度、点击区域、对齐与间距是否基本可靠。",
+      "weight": 1,
+      "pass_score": 6
+    },
+    {
+      "id": "functionality",
+      "name": "功能与 spec 对齐",
+      "description": "是否实现 harness/spec.md 中列出的功能点；边界行为是否合理。",
+      "weight": 1.5,
+      "pass_score": 7
+    }
+  ],
+  "notes": "Evaluator 需逐条打分并给出 pass/fail；functionality 权重更高。"
+}

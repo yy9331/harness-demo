@@ -1,0 +1,14 @@
+{
+  "name": "harness-demo",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "pnpm -C apps/web dev",
+    "build": "pnpm -C apps/web build",
+    "eval": "node scripts/evaluator.mjs",
+    "finalize": "node scripts/finalize.mjs"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}
